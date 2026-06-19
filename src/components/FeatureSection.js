@@ -28,7 +28,7 @@ const FeatureSection = ({ container, item }) => {
             What more can you ask for?
           </h2>
           <p className="max-w-[600px] text-slate-600 md:text-lg">
-            It's not just a paper-making app, manage your students, create batches, and share resources effortlessly.
+            It&apos;s not just a paper-making app, manage your students, create batches, and share resources effortlessly.
           </p>
         </motion.div>
 
