@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,7 +19,6 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   const [isScrolled, setIsScrolled] = useState(false);
-
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -34,8 +34,10 @@ export default function RootLayout({ children }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
-    <html lang="en">
+    // Added suppressHydrationWarning here
+    <html lang="en" suppressHydrationWarning> 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -46,7 +48,6 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Navbar isScrolled={isScrolled} mounted={mounted} />
-
           {children}
           <Footer />
         </ThemeProvider>
