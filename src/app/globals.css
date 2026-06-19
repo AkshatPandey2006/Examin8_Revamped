@@ -4,9 +4,8 @@
 
 @layer base {
   :root {
-    /* LIGHT MODE */
+    /* LIGHT MODE (Now the ONLY mode) */
     --background: 0 0% 100%;
-    /* Deep slate tinted with your 221 blue hue */
     --foreground: 221 20% 10%;
     
     --card: 0 0% 100%;
@@ -37,37 +36,6 @@
     /* Modern, tight radius */
     --radius: 0.5rem;
   }
-
-  .dark {
-    /* DARK MODE: OLED Black */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
-    
-    /* Floating elements get a microscopic 3% lightness shift with your blue hue */
-    --card: 221 20% 3%;
-    --card-foreground: 0 0% 98%;
-    --popover: 221 20% 3%;
-    --popover-foreground: 0 0% 98%;
-    
-    /* YOUR EXACT BLUE: #4376e2 (It pops flawlessly on pure black) */
-    --primary: 221 74% 57%;
-    --primary-foreground: 0 0% 100%;
-    
-    --secondary: 221 15% 10%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 221 15% 10%;
-    --muted-foreground: 221 10% 60%;
-    --accent: 221 15% 10%;
-    --accent-foreground: 0 0% 98%;
-    
-    --destructive: 350 100% 60%;
-    --destructive-foreground: 0 0% 98%;
-    
-    /* Invisible borders that catch the light */
-    --border: 221 15% 12%;
-    --input: 221 15% 12%;
-    --ring: 221 74% 57%;
-  }
 }
 
 @layer base {
@@ -97,19 +65,19 @@
 
 /* --- The Utility Belt --- */
 @layer utilities {
-  /* Apple-Tier Glassmorphism */
+  /* Apple-Tier Glassmorphism (Light mode only) */
   .glass-panel {
-    @apply bg-background/60 dark:bg-black/40 backdrop-blur-xl border border-white/10 dark:border-white/5;
+    @apply bg-background/60 backdrop-blur-xl border border-white/10;
   }
 
-  /* Standard Text Glow */
+  /* Standard Text Glow (Light mode only) */
   .text-glow {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 dark:from-white dark:to-white/60;
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70;
   }
   
   /* Gradient text using your primary blue blending into an icy lighter blue */
   .text-gradient-primary {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--primary))] to-[#85b0ff] dark:to-[#a1c4ff];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--primary))] to-[#85b0ff];
   }
 
   /* The Next.js Conf Background Aura (Tinted with your blue) */
