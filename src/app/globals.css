@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* LIGHT MODE */
+    --background: 0 0% 100%;
+    /* Deep slate tinted with your 221 blue hue */
+    --foreground: 221 20% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 221 20% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 20% 10%;
+    
+    /* YOUR EXACT BLUE: #4376e2 */
+    --primary: 221 74% 57%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Subtle off-whites tinted with your blue */
+    --secondary: 221 15% 96%;
+    --secondary-foreground: 221 20% 10%;
+    --muted: 221 15% 96%;
+    --muted-foreground: 221 10% 45%;
+    --accent: 221 15% 96%;
+    --accent-foreground: 221 20% 10%;
+    
+    --destructive: 350 100% 45%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Razor-thin, blue-tinted borders */
+    --border: 221 15% 90%;
+    --input: 221 15% 90%;
+    --ring: 221 74% 57%;
+    
+    /* Modern, tight radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* DARK MODE: OLED Black */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    
+    /* Floating elements get a microscopic 3% lightness shift with your blue hue */
+    --card: 221 20% 3%;
+    --card-foreground: 0 0% 98%;
+    --popover: 221 20% 3%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* YOUR EXACT BLUE: #4376e2 (It pops flawlessly on pure black) */
+    --primary: 221 74% 57%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 221 15% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 221 15% 10%;
+    --muted-foreground: 221 10% 60%;
+    --accent: 221 15% 10%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 350 100% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Invisible borders that catch the light */
+    --border: 221 15% 12%;
+    --input: 221 15% 12%;
+    --ring: 221 74% 57%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Font smoothing protocol */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "cv01" 1;
+  }
+
+  /* Custom selection color using your blue */
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: hsl(var(--primary));
+  }
+}
+
+/* --- The Utility Belt --- */
+@layer utilities {
+  /* Apple-Tier Glassmorphism */
+  .glass-panel {
+    @apply bg-background/60 dark:bg-black/40 backdrop-blur-xl border border-white/10 dark:border-white/5;
+  }
+
+  /* Standard Text Glow */
+  .text-glow {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 dark:from-white dark:to-white/60;
+  }
+  
+  /* Gradient text using your primary blue blending into an icy lighter blue */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--primary))] to-[#85b0ff] dark:to-[#a1c4ff];
+  }
+
+  /* The Next.js Conf Background Aura (Tinted with your blue) */
+  .bg-aura {
+    background: radial-gradient(circle at 50% -20%, hsl(var(--primary) / 0.15), transparent 60%);
+  }
+
+  /* Supreme Button Glow using your exact blue */
+  .btn-primary-glow {
+    box-shadow: 0 0 0 1px hsl(var(--primary)), 0 0 24px -4px hsl(var(--primary) / 0.5);
+  }
+}
+
+/* --- High-Fidelity Micro-Animations --- */
+.animate-in {
+  animation: animate-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Subtle, slow pulsing mesh or orb background */
+.animate-blob {
+  animation: blob 10s infinite alternate cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+}
