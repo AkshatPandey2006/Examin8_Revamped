@@ -36,15 +36,13 @@ export default function RootLayout({ children }) {
   }, []);
 
   return (
-    // Added suppressHydrationWarning here
     <html lang="en" suppressHydrationWarning> 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          forcedTheme="light" 
           disableTransitionOnChange
         >
           <Navbar isScrolled={isScrolled} mounted={mounted} />
